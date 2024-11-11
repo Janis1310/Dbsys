@@ -1,3 +1,4 @@
+aw
 CREATE TABLE Ferienwohnung
 (
     ferienwohnungsName INT,
