@@ -70,3 +70,5 @@ VALUES (1, 1000, TO_DATE('2023-07-01', 'YYYY-MM-DD'), 1);
 
 INSERT INTO Bezahlung (bezahlungsnr, betrag, zahlungsdatum, buchungsnr)
 VALUES (2, 500, TO_DATE('2023-08-01', 'YYYY-MM-DD'), 2);
+
+COMMIT;

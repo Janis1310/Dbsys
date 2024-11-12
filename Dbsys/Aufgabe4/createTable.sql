@@ -101,3 +101,5 @@ CREATE TABLE Bezahlung
     buchungsnr INT NOT NULL,
     CONSTRAINT bezahlung_fk FOREIGN KEY (buchungsnr) REFERENCES Buchung(buchungsnr)
 );
+
+COMMIT;

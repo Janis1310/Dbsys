@@ -1,3 +1,23 @@
 GRANT INSERT, SELECT, UPDATE, DELETE
-ON Kunde TO dbs01;
+ON Kunde TO dbsys90;
 
+GRANT SELECT
+ON Ferienwohnung TO dbsys90;
+
+GRANT UPDATE, INSERT, SELECT
+ON Buchung TO dbsys90;
+
+GRANT SELECT
+ON Touristenattraktion TO dbsys90;
+
+GRANT SELECT
+ON Ausstattung TO dbsys90;
+
+GRANT SELECT
+ON Land to dbsys90;
+
+GRANT SELECT, INSERT, UPDATE
+ON Adresse TO dbsys90;
+
+GRANT SELECT
+ON Bilder TO dbsys90;
