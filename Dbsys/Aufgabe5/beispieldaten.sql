@@ -155,6 +155,23 @@ INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, b
 VALUES (3, TO_DATE('2023-09-01', 'YYYY-MM-DD'), TO_DATE('2023-09-05', 'YYYY-MM-DD'), TO_DATE('2023-09-01', 'YYYY-MM-DD'), 5, 750, 'kunde3@example.com', 'Pariser Charme', TO_DATE('2023-09-05', 'YYYY-MM-DD'), 'Kreditkarte', TO_DATE('2023-09-01', 'YYYY-MM-DD'));
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
 VALUES (4, TO_DATE('2023-10-01', 'YYYY-MM-DD'), TO_DATE('2023-10-07', 'YYYY-MM-DD'), TO_DATE('2023-10-01', 'YYYY-MM-DD'), 4, 1400, 'kunde4@example.com', 'Römische Eleganz', TO_DATE('2023-10-07', 'YYYY-MM-DD'), 'PayPal', TO_DATE('2023-10-01', 'YYYY-MM-DD'));
+INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
+VALUES (7, TO_DATE('2023-09-15', 'YYYY-MM-DD'), TO_DATE('2023-09-20', 'YYYY-MM-DD'), TO_DATE('2023-09-15', 'YYYY-MM-DD'), 5, 1000, 'kunde5@example.com', 'Spanischer Stil', TO_DATE('2023-09-20', 'YYYY-MM-DD'), 'Kreditkarte', TO_DATE('2023-09-15', 'YYYY-MM-DD'));
+INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
+VALUES (8, TO_DATE('2023-10-10', 'YYYY-MM-DD'), TO_DATE('2023-10-15', 'YYYY-MM-DD'), TO_DATE('2023-10-10', 'YYYY-MM-DD'), 5, 700, 'kunde6@example.com', 'Grachteblick Amsterdam', NULL, 'PayPal', TO_DATE('2023-10-10', 'YYYY-MM-DD'));
+INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
+VALUES (9, TO_DATE('2023-08-01', 'YYYY-MM-DD'), TO_DATE('2023-08-05', 'YYYY-MM-DD'), TO_DATE('2023-08-01', 'YYYY-MM-DD'), 4, 500, 'kunde7@example.com', 'Belgischer Charme', TO_DATE('2023-08-05', 'YYYY-MM-DD'), 'Kreditkarte', TO_DATE('2023-08-01', 'YYYY-MM-DD'));
+INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
+VALUES (10, TO_DATE('2023-06-15', 'YYYY-MM-DD'), TO_DATE('2023-06-20', 'YYYY-MM-DD'), TO_DATE('2023-06-15', 'YYYY-MM-DD'), 4, 550, 'kunde9@example.com', 'Kopenhagener Stil', NULL, 'Überweisung', TO_DATE('2023-06-15', 'YYYY-MM-DD'));
+INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
+VALUES (11, TO_DATE('2023-11-10', 'YYYY-MM-DD'), TO_DATE('2023-11-15', 'YYYY-MM-DD'), TO_DATE('2023-11-10', 'YYYY-MM-DD'), 5, 675, 'kunde10@example.com', 'Schwedische Gemütlichkeit', NULL, 'Kreditkarte', TO_DATE('2023-11-10', 'YYYY-MM-DD'));
+INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
+VALUES (12, TO_DATE('2023-12-01', 'YYYY-MM-DD'), TO_DATE('2023-12-06', 'YYYY-MM-DD'), TO_DATE('2023-12-01', 'YYYY-MM-DD'), 4, 750, 'kunde5@example.com', 'Spanischer Stil', NULL, 'PayPal', TO_DATE('2023-12-01', 'YYYY-MM-DD'));
+INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
+VALUES (13, TO_DATE('2023-05-10', 'YYYY-MM-DD'), TO_DATE('2023-05-15', 'YYYY-MM-DD'), TO_DATE('2023-05-10', 'YYYY-MM-DD'), 3, 600, 'kunde8@example.com', 'Lissabonner Licht', TO_DATE('2023-05-15', 'YYYY-MM-DD'), 'Kreditkarte', TO_DATE('2023-05-10', 'YYYY-MM-DD'));
+INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
+VALUES (14, TO_DATE('2023-07-01', 'YYYY-MM-DD'), TO_DATE('2023-07-06', 'YYYY-MM-DD'), TO_DATE('2023-07-01', 'YYYY-MM-DD'), 5, 900, 'kunde6@example.com', 'Grachteblick Amsterdam', NULL, 'Kreditkarte', TO_DATE('2023-07-01', 'YYYY-MM-DD'));
+
 
 -- Bezahlungen hinzufügen
 INSERT INTO Bezahlung (bezahlungsnr, betrag, zahlungsdatum, buchungsnr)
