@@ -7,6 +7,7 @@ INSERT INTO Land (bezeichnung) VALUES ('Belgien');
 INSERT INTO Land (bezeichnung) VALUES ('Portugal');
 INSERT INTO Land (bezeichnung) VALUES ('Dänemark');
 INSERT INTO Land (bezeichnung) VALUES ('Schweden');
+INSERT INTO Land (bezeichnung) VALUES ('USA');
 
 -- Adressen hinzufügen
 INSERT INTO Adresse (adressnr, strasse, hausnummer, plz, ort, landbezeichnung)
@@ -61,6 +62,9 @@ INSERT INTO Ferienwohnung (ferienwohnungsName, groesse, anzahlZimmer, preisProTa
 VALUES ('Kopenhagener Stil', 80, 4, 150, 9);
 INSERT INTO Ferienwohnung (ferienwohnungsName, groesse, anzahlZimmer, preisProTag, adressnr)
 VALUES ('Schwedische Gemütlichkeit', 65, 3, 135, 10);
+INSERT INTO Ferienwohnung (ferienwohnungsName, groesse, anzahlZimmer, preisProTag, adressnr)
+VALUES ('ungebucht', 65, 3, 135, 10);
+
 
 -- Bilder für die Ferienwohnungen hinzufügen
 INSERT INTO Bilder (url, ferienwohnungsname)
@@ -154,19 +158,17 @@ VALUES ('Schwedische Gemütlichkeit', 'Vasa-Museum', 6);
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
 VALUES (3, TO_DATE('2023-09-01', 'YYYY-MM-DD'), TO_DATE('2023-09-05', 'YYYY-MM-DD'), TO_DATE('2023-09-01', 'YYYY-MM-DD'), 5, 750, 'kunde3@example.com', 'Pariser Charme', TO_DATE('2023-09-05', 'YYYY-MM-DD'), 'Kreditkarte', TO_DATE('2023-09-01', 'YYYY-MM-DD'));
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
-VALUES (4, TO_DATE('2023-10-01', 'YYYY-MM-DD'), TO_DATE('2023-10-07', 'YYYY-MM-DD'), TO_DATE('2023-10-01', 'YYYY-MM-DD'), 4, 1400, 'kunde4@example.com', 'Römische Eleganz', TO_DATE('2023-10-07', 'YYYY-MM-DD'), 'PayPal', TO_DATE('2023-10-01', 'YYYY-MM-DD'));
+VALUES (4, TO_DATE('2023-10-01', 'YYYY-MM-DD'), TO_DATE('2023-10-07', 'YYYY-MM-DD'), TO_DATE('2023-10-01', 'YYYY-MM-DD'), 2, 1400, 'kunde4@example.com', 'Römische Eleganz', TO_DATE('2023-10-07', 'YYYY-MM-DD'), 'PayPal', TO_DATE('2023-10-01', 'YYYY-MM-DD'));
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
 VALUES (7, TO_DATE('2023-09-15', 'YYYY-MM-DD'), TO_DATE('2023-09-20', 'YYYY-MM-DD'), TO_DATE('2023-09-15', 'YYYY-MM-DD'), 5, 1000, 'kunde5@example.com', 'Spanischer Stil', TO_DATE('2023-09-20', 'YYYY-MM-DD'), 'Kreditkarte', TO_DATE('2023-09-15', 'YYYY-MM-DD'));
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
-VALUES (8, TO_DATE('2023-10-10', 'YYYY-MM-DD'), TO_DATE('2023-10-15', 'YYYY-MM-DD'), TO_DATE('2023-10-10', 'YYYY-MM-DD'), 5, 700, 'kunde6@example.com', 'Grachteblick Amsterdam', NULL, 'PayPal', TO_DATE('2023-10-10', 'YYYY-MM-DD'));
+VALUES (8, TO_DATE('2023-10-10', 'YYYY-MM-DD'), TO_DATE('2023-10-15', 'YYYY-MM-DD'), TO_DATE('2023-10-10', 'YYYY-MM-DD'), 2, 700, 'kunde6@example.com', 'Grachteblick Amsterdam', NULL, 'PayPal', TO_DATE('2023-10-10', 'YYYY-MM-DD'));
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
 VALUES (9, TO_DATE('2023-08-01', 'YYYY-MM-DD'), TO_DATE('2023-08-05', 'YYYY-MM-DD'), TO_DATE('2023-08-01', 'YYYY-MM-DD'), 4, 500, 'kunde7@example.com', 'Belgischer Charme', TO_DATE('2023-08-05', 'YYYY-MM-DD'), 'Kreditkarte', TO_DATE('2023-08-01', 'YYYY-MM-DD'));
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
 VALUES (10, TO_DATE('2023-06-15', 'YYYY-MM-DD'), TO_DATE('2023-06-20', 'YYYY-MM-DD'), TO_DATE('2023-06-15', 'YYYY-MM-DD'), 4, 550, 'kunde9@example.com', 'Kopenhagener Stil', NULL, 'Überweisung', TO_DATE('2023-06-15', 'YYYY-MM-DD'));
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
 VALUES (11, TO_DATE('2023-11-10', 'YYYY-MM-DD'), TO_DATE('2023-11-15', 'YYYY-MM-DD'), TO_DATE('2023-11-10', 'YYYY-MM-DD'), 5, 675, 'kunde10@example.com', 'Schwedische Gemütlichkeit', NULL, 'Kreditkarte', TO_DATE('2023-11-10', 'YYYY-MM-DD'));
-INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
-VALUES (12, TO_DATE('2023-12-01', 'YYYY-MM-DD'), TO_DATE('2023-12-06', 'YYYY-MM-DD'), TO_DATE('2023-12-01', 'YYYY-MM-DD'), 4, 750, 'kunde5@example.com', 'Spanischer Stil', NULL, 'PayPal', TO_DATE('2023-12-01', 'YYYY-MM-DD'));
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
 VALUES (13, TO_DATE('2023-05-10', 'YYYY-MM-DD'), TO_DATE('2023-05-15', 'YYYY-MM-DD'), TO_DATE('2023-05-10', 'YYYY-MM-DD'), 3, 600, 'kunde8@example.com', 'Lissabonner Licht', TO_DATE('2023-05-15', 'YYYY-MM-DD'), 'Kreditkarte', TO_DATE('2023-05-10', 'YYYY-MM-DD'));
 INSERT INTO Buchung (buchungsnr, buchungsdatum, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
