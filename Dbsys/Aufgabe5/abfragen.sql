@@ -7,7 +7,7 @@ WHERE f.ferienwohnungsName NOT IN (
 );
 -- b) Welche Kunden haben EINE Ferienwohnung bereits mehrmals gebucht?
 SELECT email, COUNT(*) as buchungsanzahl
-FROM dbsys16.Buchung
+FROM Buchung
 Group by email
 HAVING COUNT(*) > 1;
 -- c) Welche Ferienwohnungen in Spanien haben durchschnittlich mehr als 4 Sterne erhalten?
@@ -58,6 +58,7 @@ JOIN Buchung b ON f.ferienwohnungsName = b.ferienwohnungsName
 GROUP BY f.ferienwohnungsName
 HAVING MAX(b.sternanzahl) <= 2;
 -- h) Welche Ferienwohnungen mit Sauna sind in Spanien in der Zeit vom 01.05.2024 – 21.05.2024 noch frei? Geben Sie den Ferienwohnungs-Namen und deren durchschnittliche Bewertung an. Ferienwohnungen mit guten Bewertungen sollen zuerst angezeigt werden. Ferienwohnungen ohne Bewertungen sollen am Ende ausgegeben werden.
+-- noch falsch
 SELECT f.ferienwohnungsName, AVG(b.sternanzahl) as DurchschnittlicheSterne
 FROM Ferienwohnung f
 JOIN Buchung b ON f.ferienwohnungsName = b.ferienwohnungsName

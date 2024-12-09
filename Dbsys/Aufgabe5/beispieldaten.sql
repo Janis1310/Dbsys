@@ -95,6 +95,7 @@ INSERT INTO Ausstattung (bezeichnung) VALUES ('Klimaanlage');
 INSERT INTO Ausstattung (bezeichnung) VALUES ('Fahrradverleih');
 INSERT INTO Ausstattung (bezeichnung) VALUES ('Fitnessstudio');
 INSERT INTO Ausstattung (bezeichnung) VALUES ('Haustierfreundlich');
+INSERT INTO Ausstattung (bezeichnung) VALUES ('Sauna');
 
 -- Zuordnungen zur Ausstattung hinzufügen
 INSERT INTO Besitzt (ausstatungsbezeichnung, ferienwohnungsname)
