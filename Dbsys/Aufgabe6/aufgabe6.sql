@@ -6,7 +6,7 @@ DROP TABLE StornierteBuchungen;
 DROP TRIGGER buchungStornieren;
 
 CREATE TABLE StornierteBuchungen(
-    StornoID INT PRIMARY KEY, -- buchungsnr nehmen
+    StornoID INT PRIMARY KEY, -- bugchungsnr nehmen
     buchungsnr INT NOT NULL,
     buchungsdatum DATE NOT NULL,
     storno DATE, -- Kann attribut
