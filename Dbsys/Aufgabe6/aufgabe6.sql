@@ -6,9 +6,19 @@ DROP TABLE StornierteBuchungen;
 DROP TRIGGER buchungStornieren;
 
 CREATE TABLE StornierteBuchungen(
-    StornoID INT PRIMARY KEY,
+    StornoID INT PRIMARY KEY, -- buchungsnr nehmen
     buchungsnr INT NOT NULL,
-    email VARCHAR2(255) NOT NULL,
+    buchungsdatum DATE NOT NULL,
+    storno DATE, -- Kann attribut
+    abreise DATE NOT NULL,
+    anreise DATE NOT NULL,
+    sternanzahl INT CHECK (sternanzahl <= 5) CHECK (sternanzahl > 0), -- kann attribut
+    betrag NUMBER NOT NULL CHECK (betrag > 0),
+    email VARCHAR2(255), -- Muss ich das auch prüfen? Ist ja schon in Kunde geprüft
+    ferienwohnungsname VARCHAR2(255) NOT NULL,
+    bewertungsdatum DATE, -- kann attribut
+    zahlungsart VARCHAR2(255) NOT NULL,
+    rechnungsdatum DATE NOT NULL,
     storniertDatum Date DEFAULT SYSDATE
 );
 
@@ -21,11 +31,20 @@ CREATE TRIGGER buchungStornieren
 BEFORE DELETE ON Buchung
 FOR EACH ROW
 BEGIN
-    Insert Into StornierteBuchungen(stornoID, buchungsnr, email, storniertDatum)
+    Insert Into StornierteBuchungen(stornoID, buchungsnr, buchungsdatum, storno, abreise, anreise, sternanzahl, betrag, email, ferienwohnungsname, bewertungsdatum, zahlungsart, rechnungsdatum)
     VALUES (SEQ_StornierteBuchungen.NEXTVAL,
         :OLD.buchungsnr,
+        :OLD.buchungsdatum,
+        :OLD.storno,
+        :OLD.abreise,
+        :OLD.anreise,
+        :OLD.sternanzahl,
+        :OLD.betrag,
         :OLD.email,
-        SYSDATE
+        :OLD.ferienwohnungsname,
+        :OLD.bewertungsdatum,
+        :OLD.zahlungsart,
+        :OLD.rechnungsdatum
     );
 
 END;
