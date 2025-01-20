@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="DB-243.23654.19">
+    <data-source name="dbsys16" uuid="a9fe5478-2109-4f95-be43-03cdfd8f9deb">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="ORACLE" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>dbsys16</user-name>
+      <schema-mapping />
+      <load-sources>user_and_system_sources</load-sources>
+    </data-source>
+  </component>
+</project>
