@@ -106,13 +106,27 @@ public class Gui {
             public void actionPerformed(ActionEvent e) {
                 String beginDatum = anreise.getText();
                 String endDatum = abreise.getText();
-                if(beginDatum.matches("\\d{2}.\\d{2}.\\d{4}") && endDatum.matches("\\d{2}.\\d{2}.\\d{4}")) {
-                    GUIFerienwohnungen.neuesFensterAnzeigen(land.getName(), ausstattungen, beginDatum, endDatum);
-                }else {
+                String selectedLand = (String) land.getSelectedItem();
+                ArrayList<String> selectedAusstattungen = new ArrayList<>();
+
+                // Ausgewählte Checkboxen für Ausstattung sammeln
+                for (Component component : mittleresPanel.getComponents()) {
+                    if (component instanceof Checkbox) {
+                        Checkbox checkbox = (Checkbox) component;
+                        if (checkbox.getState()) {
+                            selectedAusstattungen.add(checkbox.getLabel());
+                        }
+                    }
+                }
+
+                if (beginDatum.matches("\\d{2}.\\d{2}.\\d{4}") && endDatum.matches("\\d{2}.\\d{2}.\\d{4}")) {
+                    GUIFerienwohnungen.neuesFensterAnzeigen(selectedLand, selectedAusstattungen, beginDatum, endDatum);
+                } else {
                     JOptionPane.showMessageDialog(rahmen, "Datum nicht im richtigen Format");
                 }
             }
         });
+
 
 
 
