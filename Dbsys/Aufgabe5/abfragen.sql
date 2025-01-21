@@ -78,3 +78,5 @@ AND f.ferienwohnungsName NOT IN (
 )
 GROUP BY f.ferienwohnungsName
 ORDER BY DurchschnittlicheSterne DESC;
+
+SELECT * FROM BUCHUNG;

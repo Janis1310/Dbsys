@@ -82,8 +82,6 @@ public class Gui {
         mittleresPanel.add(abreise);
 
 
-
-
         String[] ausstattungenArray = ausstattungen.toArray(new String[0]);
         for (String s : ausstattungenArray) {
             mittleresPanel.add(new Checkbox(s));
@@ -126,6 +124,7 @@ public class Gui {
                 }
             }
         });
+
 
 
 

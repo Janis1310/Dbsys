@@ -16,35 +16,50 @@ public class GUIFerienwohnungen extends Gui {
             String url = "jdbc:oracle:thin:@oracle19c.in.htwg-konstanz.de:1521:ora19c";
             Connection conn = DriverManager.getConnection(url, "dbsys16", "dbsys16");
 
-            // SQL-Abfrage mit WHERE-Klauseln für Filter
+            // Dynamisch Platzhalter für die IN-Klausel generieren
+            String inClause = ausstattung.isEmpty() ? "1=1" : String.join(",", ausstattung.stream().map(s -> "?").toArray(String[]::new));
+
             String sql = """
-                SELECT fw.ferienwohnungsname, COALESCE(AVG(b.sternanzahl), 0) AS durchschnittliche_bewertung
-                FROM Ferienwohnung fw
-                    JOIN Adresse a ON fw.adressnr = a.adressnr
-                    JOIN Land l ON a.landbezeichnung = l.bezeichnung
-                    LEFT JOIN besitzt be ON fw.ferienwohnungsname = be.Ausstatungsbezeichnung
-                    LEFT JOIN Buchung b ON fw.ferienwohnungsname = b.ferienwohnungsname
-                WHERE l.bezeichnung = ?
-                    AND (? IS NULL OR fw.ferienwohnungsname IN (
-                        SELECT ferienwohnungsname FROM besitzt WHERE Ausstatungsbezeichnung IN (?)))
-                    AND (? IS NULL OR EXISTS (
-                        SELECT 1 FROM Buchung
-                        WHERE fw.ferienwohnungsname = Buchung.ferienwohnungsname
-                          AND Buchung.anreise >= TO_DATE(?, 'DD.MM.YYYY')
-                          AND Buchung.abreise <= TO_DATE(?, 'DD.MM.YYYY')))
-                GROUP BY fw.ferienwohnungsname
-                """;
+            SELECT fw.ferienwohnungsname, COALESCE(AVG(b.sternanzahl), 0) AS durchschnittliche_bewertung
+            FROM Ferienwohnung fw
+                JOIN Adresse a ON fw.adressnr = a.adressnr
+                JOIN Land l ON a.landbezeichnung = l.bezeichnung
+                LEFT JOIN besitzt be ON fw.ferienwohnungsname = be.ausstatungsbezeichnung
+                LEFT JOIN Buchung b ON fw.ferienwohnungsname = b.ferienwohnungsname
+            WHERE l.bezeichnung = ?
+              AND NOT EXISTS (
+                  SELECT 1
+                  FROM Buchung b2
+                  WHERE b2.ferienwohnungsname = fw.ferienwohnungsname
+                    AND (
+                        b2.anreise <= TO_DATE(?, 'DD-MM-YYYY') 
+                        AND b2.abreise >= TO_DATE(?, 'DD-MM-YYYY')
+                    )
+              )
+              AND (%s)
+            GROUP BY fw.ferienwohnungsname
+        """.formatted(inClause.equals("1=1") ? "1=1" : String.format(
+                    "fw.ferienwohnungsname IN (SELECT ferienwohnungsname FROM besitzt WHERE ausstatungsbezeichnung IN (%s) GROUP BY ferienwohnungsname HAVING COUNT(DISTINCT ausstatungsbezeichnung) = ?)",
+                    inClause
+            ));
 
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, land);
-            preparedStatement.setString(2, ausstattung.isEmpty() ? null : String.join(",", ausstattung));
-            preparedStatement.setString(3, ausstattung.isEmpty() ? null : String.join(",", ausstattung));
-            preparedStatement.setString(4, startDate.isEmpty() ? null : startDate);
-            preparedStatement.setString(5, startDate.isEmpty() ? null : startDate);
-            preparedStatement.setString(6, endDate.isEmpty() ? null : endDate);
+
+            int paramIndex = 1;
+            preparedStatement.setString(paramIndex++, land);
+            preparedStatement.setString(paramIndex++, endDate);
+            preparedStatement.setString(paramIndex++, startDate);
+
+
+            if (!ausstattung.isEmpty()) {
+                for (String aus : ausstattung) {
+                    preparedStatement.setString(paramIndex++, aus);
+                }
+                preparedStatement.setInt(paramIndex++, ausstattung.size());
+            }
+
 
             ResultSet rs = preparedStatement.executeQuery();
-
             while (rs.next()) {
                 String name = rs.getString("ferienwohnungsname");
                 String bewertung = rs.getString("durchschnittliche_bewertung");
@@ -59,6 +74,8 @@ public class GUIFerienwohnungen extends Gui {
         }
         return ferienWohnungenAnzeige;
     }
+
+
 
 
     public static void neuesFensterAnzeigen(String land, ArrayList<String> ausstattung, String startDate, String endDate) {
