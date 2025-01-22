@@ -21,3 +21,5 @@ GRANT SELECT ON Bilder TO dbsys16;
 
 -- Berechtigungen für Kunden (eigene Daten)
 GRANT SELECT, UPDATE ON Kunde TO dbsys16;
+
+SELECT * FROM USER_TAB_PRIVS WHERE GRANTEE = 'DBSYS16';
