@@ -15,6 +15,7 @@ import java.sql.*;
 import java.util.LinkedList;
 
 public class Gui {
+    public static String kunde_email = "kunde4@example.com";
     public static void main(String[] args) throws SQLException {
         DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
         String url = "jdbc:oracle:thin:@oracle19c.in.htwg-konstanz.de:1521:ora19c";
@@ -22,7 +23,7 @@ public class Gui {
         Statement stmt = conn.createStatement();
 
 // Fetching data for 'laender'
-        ResultSet rs = stmt.executeQuery("SELECT * FROM LAND");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM dbsys16.LAND");
         ArrayList<String> laender = new ArrayList<>();
         while (rs.next()) {
             String r1 = rs.getString("BEZEICHNUNG");
@@ -32,7 +33,7 @@ public class Gui {
 
 
         ArrayList<String> ausstattungen = new ArrayList<>();
-        ResultSet rsAustattungen = stmt.executeQuery("SELECT * FROM Ausstattung");
+        ResultSet rsAustattungen = stmt.executeQuery("SELECT * FROM dbsys16.Ausstattung");
         while (rsAustattungen.next()) {
             String r1 = rsAustattungen.getString("bezeichnung");
             ausstattungen.add(r1);

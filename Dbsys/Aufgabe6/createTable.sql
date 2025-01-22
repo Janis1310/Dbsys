@@ -90,6 +90,23 @@ CREATE TABLE Buchung
 ALTER TABLE Buchung ADD CONSTRAINT check_abreise_anreise CHECK (abreise > anreise);
 ALTER TABLE Buchung ADD CONSTRAINT check_bewertungsdatum CHECK (bewertungsdatum > anreise);
 
+CREATE SEQUENCE buchungsnr_seq
+START WITH 100
+INCREMENT BY 1
+CACHE 20;
+
+
+CREATE OR REPLACE TRIGGER buchung_buchungsnr_trigger
+BEFORE INSERT ON Buchung
+FOR EACH ROW
+BEGIN
+    IF :NEW.buchungsnr IS NULL THEN
+        SELECT buchungsnr_seq.NEXTVAL INTO :NEW.buchungsnr FROM dual;
+    END IF;
+END;
+/
+
+
 CREATE TABLE Besitzt
 (
     ausstatungsbezeichnung VARCHAR2(255) NOT NULL,
