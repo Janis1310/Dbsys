@@ -44,7 +44,7 @@ public class Gui {
         stmt.close();
         conn.close();
 
-        JFrame rahmen = new JFrame("Responsive GUI");
+        JFrame rahmen = new JFrame("Ferienwohnungen buchen");
         rahmen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         rahmen.setSize(600, 600);
 
